@@ -30,7 +30,7 @@ function App() {
       setDefaults(3);
     } else if (
       value.toLowerCase() ===
-      "select contact_name, address,city,postal_code,country from customers limit 18;"
+      "select contact_name, address,city,postal_code, country from customers limit 18;"
     ) {
       setDefaults(4);
     } else {

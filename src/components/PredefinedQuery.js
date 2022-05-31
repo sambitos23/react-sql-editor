@@ -8,7 +8,7 @@ function PredefinedQuery({ setDefaults, setValue }) {
     },
     {
       query:
-        "select contact_name, address,city,postal_code,country from customers limit 18;",
+        "select contact_name, address,city,postal_code, country from customers limit 18;",
       default: 4,
     },
     {
