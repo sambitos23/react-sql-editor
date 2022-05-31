@@ -6,6 +6,8 @@ export default function GetTableInfo(data) {
     infoStore = require("./DataStore/suppliers.json");
   } else if (data === 3) {
     infoStore = require("./DataStore/products.json");
+  } else if (data === 4) {
+    infoStore = require("./DataStore/select_customer.json");
   }
   let tableHeaders = [];
   let tableRows = [];

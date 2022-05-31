@@ -1,9 +1,30 @@
 import React from "react";
 
 function PredefinedQuery({ setDefaults, setValue }) {
+  const qurtyValue = [
+    {
+      query: "select * from customers;",
+      default: 1,
+    },
+    {
+      query:
+        "select contact_name, address,city,postal_code,country from customers limit 18;",
+      default: 4,
+    },
+    {
+      query: "select * from products;",
+      default: 2,
+    },
+    {
+      query: "select * from suppliers;",
+      default: 3,
+    },
+  ];
   return (
     <div>
-      {/* div containing preset query buttons */}
+      <div className="mx-auto flex items-center font-bold justify-center mt-2 py-2 h-11 px-4 rounded text-white bg-indigo-500 font-mono w-56 text-xl">
+        React SQL Editor
+      </div>
       <div className=" p-4 text-indigo-500">
         <div className="flex justify-center items-center">
           <svg
@@ -22,33 +43,20 @@ function PredefinedQuery({ setDefaults, setValue }) {
           <p className="font-bold text-lg ">Available Queries</p>
         </div>
 
-        <p
-          className="cursor-pointer bg-gray-300 hover:bg-gray-400 font-mono hover:text-white p-2 text-center rounded-sm my-4"
-          onClick={() => {
-            setDefaults(1);
-            setValue("select * from customers;");
-          }}
-        >
-          select * from customers;
-        </p>
-        <p
-          className="cursor-pointer bg-gray-300 hover:bg-gray-400 font-mono hover:text-white p-2 text-center rounded-sm mb-4"
-          onClick={() => {
-            setDefaults(2);
-            setValue("select * from suppliers;");
-          }}
-        >
-          select * from suppliers;
-        </p>
-        <p
-          className="cursor-pointer bg-gray-300 hover:bg-gray-400 font-mono hover:text-white p-2 text-center rounded-sm"
-          onClick={() => {
-            setDefaults(3);
-            setValue("select * from products;");
-          }}
-        >
-          select * from products;
-        </p>
+        <div className="h-48 overflow-auto scrollbar-hide">
+          {qurtyValue.map((item, index) => (
+            <p
+              key={index}
+              className="cursor-pointer bg-gray-300 hover:bg-gray-400 font-mono hover:text-white p-2 text-center text-sm rounded-sm my-4"
+              onClick={() => {
+                setDefaults(`${item.default}`);
+                setValue(`${item.query}`);
+              }}
+            >
+              {item.query}
+            </p>
+          ))}
+        </div>
       </div>
     </div>
   );

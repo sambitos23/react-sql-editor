@@ -26,48 +26,24 @@ function App() {
       setDefaults(2);
     } else if (value.toLowerCase() === "select * from products;") {
       setDefaults(3);
+    } else if (
+      value.toLowerCase() ===
+      "select contact_name, address,city,postal_code,country from customers limit 18;"
+    ) {
+      setDefaults(4);
     } else {
       setDefaults(0);
     }
   }, [value]);
 
   return (
-    <div>
-      {/* react-hot-toast for notifications*/}
-      {/* <Toaster
-        position="top-center"
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          className: "",
-          duration: 5000,
-          style: {
-            background: "#000000",
-            color: "#3A4374",
-          },
-          success: {
-            duration: 3000,
-            iconTheme: {
-              primary: "#809eda",
-              secondary: "#000000",
-            },
-          },
-          error: {
-            iconTheme: {
-              primary: "#D73737",
-              secondary: "#000000",
-            },
-          },
-        }}
-      /> */}
-
-      <div>
-        <div className="flex justify-center items-start w-full">
-          <div className="w-3/12">
+    <div className="flex flex-wrap justify-center items-start w-full">
+      <div className="lg:w-9/12">
+        <div className="flex flex-wrap justify-center items-start w-full">
+          <div className="w-full lg:w-3/12">
             <PredefinedQuery setValue={setValue} setDefaults={setDefaults} />
           </div>
-          <div className="w-6/12">
+          <div className="w-full lg:w-9/12">
             <div className="flex w-full justify-between">
               <div className="font-bold text-center py-4 w-28 bg-gray-200">
                 Input
@@ -85,13 +61,13 @@ function App() {
             </div>
             <SqlEditor value={value} setValue={setValue} />
           </div>
-          <div className="w-3/12">
-            <DataDraw />
-          </div>
         </div>
+        <Table query={query} headers={headers} rows={rows} csvData={csvData} />
       </div>
 
-      <Table query={query} headers={headers} rows={rows} />
+      <div className="w-full lg:w-3/12">
+        <DataDraw />
+      </div>
     </div>
   );
 }
