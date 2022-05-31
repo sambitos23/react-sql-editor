@@ -22,7 +22,7 @@ function PredefinedQuery({ setDefaults, setValue }) {
   ];
   return (
     <div>
-      <div className="mx-auto flex items-center font-bold justify-center mt-2 py-2 h-11 px-4 rounded text-white bg-indigo-500 font-mono w-56 text-xl">
+      <div className="mx-auto flex items-center font-bold justify-center mt-2 py-2 h-11 px-4 rounded text-white bg-indigo-500 font-mono w-56 text-lg md:text-xl">
         React SQL Editor
       </div>
       <div className=" p-4 text-indigo-500">
