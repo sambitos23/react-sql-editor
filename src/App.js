@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import Buttons from "./components/Buttons";
 import PredefinedQuery from "./components/PredefinedQuery";
 import SqlEditor from "./components/SqlEditor";
@@ -14,6 +15,7 @@ function App() {
   const [csvData, setCSVData] = useState([]);
 
   if (value === "") {
+    toast.error("Please remove the code and run the query");
     setValue(
       "-- Online SQL Editor to Run SQL Online. \n-- Use the editor to view all tables in SQL operations.\n\n-- Remove the code and Start exploring!\n\n-- Happy Coding!"
     );
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <div className="flex flex-wrap justify-center items-start w-full">
-      <div className="lg:w-9/12">
+      <div className="w-full lg:w-9/12">
         <div className="flex flex-wrap justify-center items-start w-full">
           <div className="w-full lg:w-3/12">
             <PredefinedQuery setValue={setValue} setDefaults={setDefaults} />
@@ -68,6 +70,14 @@ function App() {
       <div className="w-full lg:w-3/12">
         <DataDraw />
       </div>
+
+      <Toaster
+        position="bottom-left"
+        gutter={8}
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
     </div>
   );
 }

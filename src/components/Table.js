@@ -1,13 +1,14 @@
 import React from "react";
 import { CSVLink } from "react-csv";
+import TableUI from "./TableUI";
 
 function Table({ query, headers, rows, csvData }) {
   return (
     <div>
       {query ? (
         <section className="text-gray-600 body-font pl-4">
-          <div className="flex w-full justify-between">
-            <div className="font-bold text-center py-4 w-40 mt-1 bg-gray-500 text-white rounded-tl-md rounded-tr-lg">
+          <div className="flex w-full justify-between mt-6 lg:mt-0">
+            <div className="font-bold text-center py-4 w-40 bg-gray-500 text-white rounded-tl-md rounded-tr-lg">
               Output
             </div>
             <CSVLink
@@ -32,41 +33,10 @@ function Table({ query, headers, rows, csvData }) {
               </button>
             </CSVLink>
           </div>
-          <div className="container">
-            <div className="w-full h-80 overflow-auto scrollbar-hide">
-              <table className="table-auto w-full text-left whitespace-no-wrap">
-                <thead>
-                  <tr>
-                    {headers.map((header, index) => (
-                      <th
-                        key={index}
-                        className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"
-                      >
-                        {header}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((row_value, index) => (
-                    <tr key={index}>
-                      {row_value.map((cell_value, index) => (
-                        <td
-                          key={index}
-                          className="border-t-2 border-gray-200 px-4 py-2 text-sm"
-                        >
-                          {cell_value}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <TableUI headers={headers} rows={rows} />
         </section>
       ) : (
-        <div className="w-full flex h-80 justify-center items-center font-bold font-mono text-gray-400 text-2xl">
+        <div className="w-full flex text-center h-80 justify-center items-center font-bold font-mono text-gray-400 text-2xl px-6">
           Run Something & Your Output Shall Appear!
         </div>
       )}

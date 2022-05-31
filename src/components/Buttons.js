@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import getTableInfo from "./GetTableInfo";
 
 function Buttons({
@@ -12,8 +13,6 @@ function Buttons({
   value,
 }) {
   const runQuery = () => {
-    // function to retieve the mock data
-    // toast.success("Query run");
     setQuery(value);
     const { tableHeaders, tableRows } = getTableInfo(defaults);
     setHeaders(tableHeaders);
@@ -25,6 +24,11 @@ function Buttons({
         temp.push(row);
       });
       setCSVData(temp);
+      if (temp.length > 0) {
+        toast.success("Query run");
+      } else {
+        toast.error("This didn't work.");
+      }
     }
   };
 

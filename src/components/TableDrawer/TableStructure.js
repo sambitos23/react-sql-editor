@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import TablePopup from "./TablePopup";
+import GetTableInfo from "../GetTableInfo";
 
-function TableStructure({ tableName, tableHead }) {
+function TableStructure({ tableName, tableHead, tableNo }) {
+  const [trigger, setTrigger] = useState(false);
   tableHead = Object.values(tableHead);
+
+  const [tableHeadData, setTableHeadData] = useState([]);
+  const [tableRowData, setTableRowData] = useState([]);
+  const handleTable = () => {
+    const { tableHeaders, tableRows } = GetTableInfo(tableNo);
+    setTableHeadData(tableHeaders);
+    setTableRowData(tableRows);
+    setTrigger(true);
+  };
+
   return (
     <div className="mx-10">
-      <div className="flex items-center">
+      <div className="flex items-center cursor-pointer" onClick={handleTable}>
         <svg
           width="28"
           height="28"
@@ -34,6 +47,13 @@ function TableStructure({ tableName, tableHead }) {
           </p>
         </div>
       ))}
+
+      <TablePopup
+        trigger={trigger}
+        setTrigger={setTrigger}
+        headers={tableHeadData}
+        rows={tableRowData}
+      />
     </div>
   );
 }

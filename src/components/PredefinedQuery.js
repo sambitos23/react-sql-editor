@@ -40,10 +40,10 @@ function PredefinedQuery({ setDefaults, setValue }) {
               d="M22.5,0,9,27h4.5L27,0ZM4.5,4.5,0,13.5l4.5,9H9l-4.5-9L9,4.5ZM27,4.5l4.5,9-4.5,9h4.5l4.5-9-4.5-9Z"
             />
           </svg>
-          <p className="font-bold text-lg ">Available Queries</p>
+          <p className="font-bold text-lg">Available Queries</p>
         </div>
 
-        <div className="h-48 overflow-auto scrollbar-hide">
+        <div className="h-52 lg:h-48 overflow-auto scrollbar-hide mb-6 lg:mb-0">
           {qurtyValue.map((item, index) => (
             <p
               key={index}
