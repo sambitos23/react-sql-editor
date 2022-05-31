@@ -2,7 +2,7 @@ import React from "react";
 
 function TableUI({ headers, rows }) {
   return (
-    <div className="w-full h-screen md:h-80 overflow-auto scrollbar-hide">
+    <div className="w-full h-80 overflow-auto scrollbar-hide">
       <table className="table-auto w-full text-left whitespace-no-wrap">
         <thead>
           <tr>
