@@ -58,8 +58,6 @@ Mobile performance view
 
 ![web.dev Report](Screenshot/mobileperformance.PNG)
 
-### [BrowserStack Report](https://www.browserstack.com/speedlab)
-
 ## 🪜 Steps I took to optimize the page load time
 
 - Used Lighthouse DevTools Extension to find the performance issues and fix them using their actionable suggestion.
